@@ -18,8 +18,8 @@ const SearchSection = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </Box>
-      <Box ml={"0.5rem"}>
-        <Controls.InputButton text="Search" onClick={handleSearch} colorScheme={"green"} />
+      <Box ml={"0.5rem"} display="flex" alignItems="center">
+        <Controls.InputButton text="Search" size="sm" onClick={handleSearch} colorScheme={"green"} />
       </Box>
     </Box>
   );
