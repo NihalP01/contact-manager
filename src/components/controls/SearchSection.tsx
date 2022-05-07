@@ -19,7 +19,7 @@ const SearchSection = () => {
         />
       </Box>
       <Box ml={"0.5rem"}>
-        <Controls.InputButton text="Search" onClick={handleSearch} />
+        <Controls.InputButton text="Search" onClick={handleSearch} colorScheme={"green"} />
       </Box>
     </Box>
   );

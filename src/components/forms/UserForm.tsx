@@ -1,12 +1,10 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Controls } from "../controls/Controls";
 
 const UserForm = () => {
   const [email, setEmail] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
-
-  console.log(email + userName);
 
   const handleClick = () => {
     //   TODO:Implement it later
@@ -26,13 +24,9 @@ const UserForm = () => {
         borderWidth="1px"
         borderRadius="lg"
         overflow="hidden"
-        backgroundColor={"#a5d6a7"}
         shadow="md"
       >
         <Box p={"6"}>
-          <Text textAlign={"center"} fontSize="2xl" mb={"0.5rem"}>
-            Contact Manager
-          </Text>
           <Box>
             <Controls.InputField
               placeHolder="Name"
@@ -56,7 +50,7 @@ const UserForm = () => {
             style={{ display: "flex", justifyContent: "center" }}
           >
             <Controls.InputButton
-              text="Add"
+              text="Save"
               onClick={handleClick}
               colorScheme={"blue"}
               size="sm"

@@ -1,9 +1,26 @@
-import { Box, Button, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import React from "react";
 import { Controls } from "../controls/Controls";
 
+
+import {
+  Popover,
+  PopoverTrigger as OrigPopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverArrow,
+  PopoverCloseButton,
+  useDisclosure,
+} from "@chakra-ui/react";
+import { Forms } from "../forms/Forms";
+
+export const PopoverTrigger: React.FC<{ children: React.ReactNode }> =
+  OrigPopoverTrigger;
+
 const HomePage = () => {
   const handleClick = () => {};
+
+  const { onOpen, onClose, isOpen } = useDisclosure();
 
   return (
     <Box
@@ -12,6 +29,7 @@ const HomePage = () => {
       borderRadius="lg"
       overflow="hidden"
       shadow={"md"}
+      backgroundColor=""
     >
       <Box
         p="4"
@@ -24,14 +42,34 @@ const HomePage = () => {
             Contact List
           </Text>
         </Box>
-        <Box>
-          <Controls.InputButton
-            text="Add Contact"
-            onClick={handleClick}
-            colorScheme="green"
-            size="sm"
-          />
-        </Box>
+
+        {/* //POP UP Implementation */}
+        <Popover
+          isOpen={isOpen}
+          onOpen={onOpen}
+          onClose={onClose}
+          placement="bottom"
+          closeOnBlur={false}
+        >
+          <PopoverTrigger>
+            <Box>
+              <Controls.InputButton
+                text="Add Contact"
+                onClick={handleClick}
+                colorScheme="cyan"
+                size="sm"
+              />
+            </Box>
+          </PopoverTrigger>
+          <PopoverContent>
+            <PopoverHeader fontWeight="semibold">Enter contact details</PopoverHeader>
+            <PopoverArrow />
+            <PopoverContent p={2}>
+              <PopoverCloseButton />
+              <Forms.UserForm />
+            </PopoverContent>
+          </PopoverContent>
+        </Popover>
       </Box>
       <Box>
         <Controls.SearchSection />
