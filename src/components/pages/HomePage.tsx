@@ -1,7 +1,6 @@
 import { Box, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useState } from "react";
 import { Controls } from "../controls/Controls";
-
 
 import {
   Popover,
@@ -13,12 +12,25 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { Forms } from "../forms/Forms";
+import { Contact } from "../model/Contact";
 
 export const PopoverTrigger: React.FC<{ children: React.ReactNode }> =
   OrigPopoverTrigger;
 
+// const [email, setEmail] = useState<string>("");
+// const [name, setName] = useState<string>("");
+
+// const [contact, setContact] = useState<Contact[]>([]);
+
+// const addContact = (e: React.FormEvent) => {
+//   e.preventDefault();
+//   if (email && name) {
+//     setContact([...contact, { id: Date.now(), name, email }]);
+//   }
+// };
+
 const HomePage = () => {
-  const handleClick = () => {};
+  const addContact = () => {};
 
   const { onOpen, onClose, isOpen } = useDisclosure();
 
@@ -55,14 +67,16 @@ const HomePage = () => {
             <Box>
               <Controls.InputButton
                 text="Add Contact"
-                onClick={handleClick}
+                onClick={addContact}
                 colorScheme="cyan"
                 size="sm"
               />
             </Box>
           </PopoverTrigger>
           <PopoverContent>
-            <PopoverHeader fontWeight="semibold">Enter contact details</PopoverHeader>
+            <PopoverHeader fontWeight="semibold">
+              Enter contact details
+            </PopoverHeader>
             <PopoverArrow />
             <PopoverContent p={2}>
               <PopoverCloseButton />
@@ -75,9 +89,8 @@ const HomePage = () => {
         <Controls.SearchSection />
       </Box>
 
-      <Box p="3" mt="0.2rem">
-        {/* FIXME:For testing only */}
-        <Controls.UserList />
+      <Box pl="4" pr="4" pb="4" mt="0.2rem">
+        {/* FIXME:For Testing  */}
         <Controls.UserList />
         <Controls.UserList />
         <Controls.UserList />

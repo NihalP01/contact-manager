@@ -9,7 +9,7 @@ const SearchSection = () => {
   const handleSearch = () => {};
 
   return (
-    <Box p="2" display={"flex"} justifyContent="center">
+    <Box p="4">
       <Box>
         <Controls.InputField
           placeHolder="Search a number"
@@ -18,9 +18,9 @@ const SearchSection = () => {
           onChange={(e) => setSearch(e.target.value)}
         />
       </Box>
-      <Box ml={"0.5rem"} display="flex" alignItems="center">
+      {/* <Box ml={"0.5rem"} display="flex" alignItems="center">
         <Controls.InputButton text="Search" size="sm" onClick={handleSearch} colorScheme={"green"} />
-      </Box>
+      </Box> */}
     </Box>
   );
 };
