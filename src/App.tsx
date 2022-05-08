@@ -1,6 +1,6 @@
 import { Box, Container } from "@chakra-ui/react";
 import React from "react";
-import { Pages } from "./components/pages/Pages";
+import { Pages } from "./pages/Pages";
 
 const App: React.FC = () => {
   return (

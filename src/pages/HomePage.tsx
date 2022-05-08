@@ -1,6 +1,6 @@
 import { Box, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { Controls } from "../controls/Controls";
+import { Controls } from "../components/controls/Controls";
 
 import {
   Popover,
@@ -11,23 +11,10 @@ import {
   PopoverCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
-import { Forms } from "../forms/Forms";
-import { Contact } from "../model/Contact";
+import { Forms } from "../components/forms/Forms";
 
 export const PopoverTrigger: React.FC<{ children: React.ReactNode }> =
   OrigPopoverTrigger;
-
-// const [email, setEmail] = useState<string>("");
-// const [name, setName] = useState<string>("");
-
-// const [contact, setContact] = useState<Contact[]>([]);
-
-// const addContact = (e: React.FormEvent) => {
-//   e.preventDefault();
-//   if (email && name) {
-//     setContact([...contact, { id: Date.now(), name, email }]);
-//   }
-// };
 
 const HomePage = () => {
   const addContact = () => {};
@@ -78,10 +65,8 @@ const HomePage = () => {
               Enter contact details
             </PopoverHeader>
             <PopoverArrow />
-            <PopoverContent p={2}>
-              <PopoverCloseButton />
-              <Forms.UserForm />
-            </PopoverContent>
+            <PopoverCloseButton />
+            <Forms.UserForm />
           </PopoverContent>
         </Popover>
       </Box>

@@ -1,13 +1,25 @@
 import { Box } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Controls } from "../controls/Controls";
+import { Contact } from "../model/Contact";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../store/store";
+import { addContact } from "../../slices/contactSlice";
 
 const UserForm = () => {
   const [email, setEmail] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
+  const [contactData, setContactData] = useState<Contact[]>([]);
 
-  const handleClick = () => {
-    //   TODO:Implement it later
+  const contact = useSelector((state: RootState) => state.contact.contact);
+  const dispatch = useDispatch();
+
+  const onSaveClick = (e: React.FormEvent) => {
+    e.preventDefault();
+    setContactData([...contactData, { id: Date.now(), email, name: userName }]);
+    dispatch(addContact(contactData));
+    setEmail("");
+    setUserName("");
   };
 
   return (
@@ -18,6 +30,7 @@ const UserForm = () => {
         alignItems: "center",
         marginTop: "2rem",
       }}
+      onSubmit={onSaveClick}
     >
       <Box
         maxW="md"
@@ -51,7 +64,7 @@ const UserForm = () => {
           >
             <Controls.InputButton
               text="Save"
-              onClick={handleClick}
+              type="submit"
               colorScheme={"blue"}
               size="sm"
             />
